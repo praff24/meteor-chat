@@ -1,0 +1,60 @@
+<head>
+  <title>chatDemo</title>
+</head>
+
+<body>
+  <div id="wrapper">
+       {{> sidebar }}
+       <div id="page-content-wrapper">
+          <h1>Chatapp</h1>
+          {{> minimize}} <br>
+          {{> loginButtons align="right"}}<br>
+          <div id="boxofmessages">
+            {{> messages }}
+            {{> input }}
+          </div>
+
+      </div>
+  </div>
+</body>
+
+
+<template name="sidebar">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav onlUsers">
+            <li class="sidebar-brand">
+            </li>
+            {{#each onlusr}}
+                <li class="user"><a href='#'>{{username}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name="messages">
+  <div id="messagesdisplay">
+
+    {{#each msgs}}
+      <strong>{{name}}:</strong> {{text}}<br>
+    {{/each}}
+  </div>
+</template>
+
+<template name="input">
+  <div id="messagetype">
+    <p>Message: <input type="text" id="message"></p>
+  </div>
+</template>
+
+<template name="minimize">
+  <button class="minimizebutton"><span class="glyphicon glyphicon-minus"></span></button>
+  <button type="button" class="offerbutton">Offer</button>
+<div id="offerpopup">
+    <label for="">Quantity</label><input type="range" min="1" max="100" step="1" id="slider1" value="19">
+    <input id="sliderresult1"> <br> <br>
+    <label for="">Price</label><input type="range" min="100" max="10000" id="slider2">
+    <input id="sliderresult2" value="5050"> <br> <br>
+    <button type="button" class="pushmessage">OKAY</button>
+</div>
+<button type="button" class="clearchat"><span class="glyphicon glyphicon-trash"></span></button>
+</template>
